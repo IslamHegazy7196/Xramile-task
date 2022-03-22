@@ -8,7 +8,11 @@ import { CartProvider } from "./context/cart_context";
 
 ReactDOM.render(
   <ProductsProvider>
-    <App />
+    <FilterProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </FilterProvider>
   </ProductsProvider>,
   document.getElementById("root")
 );

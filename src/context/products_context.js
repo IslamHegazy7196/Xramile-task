@@ -35,7 +35,6 @@ export const ProductsProvider = ({ children }) => {
   };
   const fetchProducts = () => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
-    console.log(data.products)
     try {
       const products = data.products;
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
@@ -43,10 +42,11 @@ export const ProductsProvider = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_ERROR });
     }
   };
-  const fetchSingleProduct = () => {
+  const fetchSingleProduct = (id) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
     try {
-      const singleProduct = "response.data";
+      const filteredArray = data.products.filter((item)=>{return item.id===id});
+      const singleProduct=filteredArray[0]
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
