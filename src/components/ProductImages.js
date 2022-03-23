@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const ProductImages = ({ images = [],featuredPhoto }) => {
+const ProductImages = ({ images = [], featuredPhoto }) => {
   return (
     <Wrapper>
       <img src={featuredPhoto} alt="main" className="main" />
       <div className="gallery">
         {images.map((image, index) => {
-          return (
-            <img
-              src={image}
-              alt={index}
-              key={index}
-            />
-          );
+          return <img src={image} alt={index} key={index} />;
         })}
       </div>
     </Wrapper>

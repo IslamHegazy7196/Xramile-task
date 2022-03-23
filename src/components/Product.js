@@ -3,8 +3,19 @@ import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
+import { useCartContext } from "../context/cart_context";
 
 const Product = ({ featuredPhoto, name, price, id }) => {
+  const { addToCart } = useCartContext();
+  const product = {
+    id,
+    name,
+    amount: 1,
+    featuredPhoto,
+    price,
+  };
+  let amount = 1;
   return (
     <Wrapper>
       <div className="container">
@@ -16,6 +27,9 @@ const Product = ({ featuredPhoto, name, price, id }) => {
       <footer>
         <h5>{name}</h5>
         <p>{formatPrice(price)}</p>
+        <h4>
+          <FaShoppingCart onClick={() => addToCart(id, amount, product)} />
+        </h4>
       </footer>
     </Wrapper>
   );
@@ -70,6 +84,9 @@ const Wrapper = styled.article`
   footer p {
     margin-bottom: 0;
     font-weight: 400;
+  }
+  footer h4:hover {
+    cursor: pointer;
   }
 
   footer p {

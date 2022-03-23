@@ -1,5 +1,5 @@
 import React from "react";
-import { FaShoppingCart, FaUserPlus } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
@@ -17,8 +17,8 @@ const CartButtons = () => {
           <span className="cart-value">{total_items}</span>
         </span>
       </Link>
-      {total_items<1&&<h1 className="cart-btn">Empty</h1>}
-      
+      {/* follow camal case */}
+      {total_items < 1 && <h1 className="cart-btn">Empty</h1>}
     </Wrapper>
   );
 };

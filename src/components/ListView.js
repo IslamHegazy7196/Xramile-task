@@ -1,23 +1,45 @@
-import React from 'react'
-import styled from 'styled-components'
-import { formatPrice } from '../utils/helpers'
-import { Link } from 'react-router-dom'
-const ListView = ({products}) => {
+import React from "react";
+import styled from "styled-components";
+import { formatPrice } from "../utils/helpers";
+import { Link } from "react-router-dom";
+import { useCartContext } from "../context/cart_context";
+const ListView = ({ products }) => {
+  const { addToCart } = useCartContext();
   return (
-    <Wrapper>{products.map((product)=>{
-      const {id,featuredPhoto,name,price,description}=product
-      return <article key={id}>
-        <img src={featuredPhoto} alt={name}/>
-        <div>
-          <h4>{name}</h4>
-          <h5 className='price'>{formatPrice(price)}</h5>
-          <p>{description.substring(0,150)}...</p>
-          <Link to={`./products/${id}`} className='btn'>Details</Link>
-          </div> 
-      </article>
-    })}</Wrapper>
-  )
-}
+    <Wrapper>
+      {products.map((product) => {
+        const { id, featuredPhoto, name, price, description } = product;
+        const item = {
+          id,
+          name,
+          amount: 1,
+          featuredPhoto,
+          price,
+        };
+        let amount = 1;
+        return (
+          <article key={id}>
+            <img src={featuredPhoto} alt={name} />
+            <div>
+              <h4>{name}</h4>
+              <h5 className="price">{formatPrice(price)}</h5>
+              <p>{description.substring(0, 150)}...</p>
+              <Link to={`./products/${id}`} className="btn">
+                Details
+              </Link>
+              <button
+                className="btn"
+                onClick={() => addToCart(id, amount, product)}
+              >
+                Add to cart
+              </button>
+            </div>
+          </article>
+        );
+      })}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   display: grid;
@@ -46,6 +68,7 @@ const Wrapper = styled.section`
   .btn {
     font-size: 0.5rem;
     padding: 0.25rem 0.5rem;
+    margin-right: 0.75rem;
   }
   @media (min-width: 992px) {
     article {
@@ -55,6 +78,6 @@ const Wrapper = styled.section`
       align-items: center;
     }
   }
-`
+`;
 
-export default ListView
+export default ListView;

@@ -7,21 +7,37 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  UPDATE_PAGINATION,
 } from "../actions";
+import paginate from "../utils/paginate";
 
 const filter_reducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
     let maxprice = action.payload.map((p) => p.price);
     maxprice = Math.max(...maxprice);
+    const paginated = paginate(action.payload);
     return {
       ...state,
       all_products: [...action.payload],
       filtered_products: [...action.payload],
+      all_pagination: paginated,
+      paginated_products: paginated[0],
+      current_pagination: 0,
       filters: { ...state.filters, max_price: maxprice, price: maxprice },
     };
   }
+  if (action.type === UPDATE_PAGINATION) {
+    return {
+      ...state,
+      paginated_products: state.all_pagination[action.payload],
+      current_pagination: action.payload,
+    };
+  }
   if (action.type === SET_GRIDVIEW) {
-    return { ...state, grid_view: true };
+    return {
+      ...state,
+      grid_view: true,
+    };
   }
   if (action.type === SET_LISTVIEW) {
     return { ...state, grid_view: false };
@@ -74,14 +90,16 @@ const filter_reducer = (state, action) => {
       });
     }
     if (color !== "all") {
-      tempProducts = tempProducts.filter((product) =>product.colors.find((c) => c === color)
-      )
+      tempProducts = tempProducts.filter((product) =>
+        product.colors.find((c) => c === color)
+      );
     }
 
-    tempProducts = tempProducts.filter((product) => product.price <= price)
-    
+    tempProducts = tempProducts.filter((product) => product.price <= price);
+
     if (shipping) {
-      tempProducts = tempProducts.filter((product) => product.shipping === true
+      tempProducts = tempProducts.filter(
+        (product) => product.shipping === true
       );
     }
     return { ...state, filtered_products: tempProducts };

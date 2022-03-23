@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <Wrapper className='section-center'>
       <article className='content'>
-        <h1>Design your <br /> comfort zone</h1>
+        <h1>Never low <br /> your standard</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae porro optio odit alias itaque ipsum explicabo illo dicta fugit, perferendis impedit quia sint, consequuntur fugiat.</p>
         <Link to='/products' className='btn hero-btn'>Shop now</Link>
       </article>

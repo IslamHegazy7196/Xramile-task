@@ -6,8 +6,8 @@ import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product }) => {
   const { addToCart } = useCartContext();
-  const { id } = product;
   const [amount, setAmount] = useState(1);
+  const { id } = product;
   const increase = () => {
     setAmount((oldAmount) => {
       let tempAmount = oldAmount + 1;
@@ -25,7 +25,6 @@ const AddToCart = ({ product }) => {
   };
   return (
     <Wrapper>
-      
       <div className="btn-container">
         <AmountButtons
           amount={amount}

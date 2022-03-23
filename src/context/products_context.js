@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import reducer from "../reducers/products_reducer";
-import data from'../db.json'
+import data from "../db.json";
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -45,8 +45,10 @@ export const ProductsProvider = ({ children }) => {
   const fetchSingleProduct = (id) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
     try {
-      const filteredArray = data.products.filter((item)=>{return item.id===id});
-      const singleProduct=filteredArray[0]
+      const filteredArray = data.products.filter((item) => {
+        return item.id === id;
+      });
+      const singleProduct = filteredArray[0];
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });

@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "1",
-      "name": "Comba Leather And Suede Trainers",
+      "name": "Jordan Trainers",
       "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
       "rate": "3.5",
       "reviewsCount": "50",
@@ -18,7 +18,7 @@
     },
     {
       "id": "2",
-      "name": "Comba Leather And Suede Trainers",
+      "name": "Leather Pair",
       "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
       "rate": "4.5",
       "reviewsCount": "28",
@@ -34,7 +34,7 @@
     },
     {
       "id": "3",
-      "name": "Comba Leather And Suede Trainers",
+      "name": "Running Shoe",
       "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
       "rate": "5",
       "reviewsCount": "37",
@@ -50,7 +50,7 @@
     },
     {
       "id": "4",
-      "name": "Comba Leather And Suede Trainers",
+      "name": "Leather Shoes",
       "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
       "rate": "3",
       "reviewsCount": "15",
@@ -66,7 +66,7 @@
     },
     {
       "id": "5",
-      "name": "Comba Leather And Suede Trainers",
+      "name": "Suede Trainers",
       "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
       "rate": "4",
       "reviewsCount": "73",
@@ -82,7 +82,7 @@
     },
     {
       "id": "6",
-      "name": "Comba Leather And Suede Trainers",
+      "name": "Comba Trainers",
       "description": "These classic and sport-inspired Lacoste Trainers crafted in leather and suede are enlivened with colored bands on the sides. A winning style for summer strolls.",
       "rate": "3.5",
       "reviewsCount": "55",

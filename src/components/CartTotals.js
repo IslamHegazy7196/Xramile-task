@@ -12,20 +12,18 @@ const CartTotals = () => {
       <div>
         <article>
           <h5>
-            subtotal : <span>{formatPrice(total_amount)}</span>
+            subtotal: <span>{formatPrice(total_amount)}</span>
           </h5>
           <p>
-            shipping fee : <span>{formatPrice(shipping_fee)}</span>
+            shipping fee: <span>{formatPrice(shipping_fee)}</span>
           </p>
           <hr />
           <h4>
-            Order total :{" "}
+            Order total:
             <span>{formatPrice(total_amount + shipping_fee)}</span>
           </h4>
         </article>
-        <Link className="btn">
-          proceed to checkout
-        </Link>
+        <Link className="btn">proceed to checkout</Link>
       </div>
     </Wrapper>
   );

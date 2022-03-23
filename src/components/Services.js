@@ -8,7 +8,7 @@ const Services = () => {
       <div className="section-center">
         <article className="header">
           <h3>
-            Custom furniture <br /> built for you
+            Best Shoes <br /> made for you
           </h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur

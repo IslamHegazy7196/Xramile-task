@@ -25,6 +25,7 @@ const SingleProductPage = () => {
     fetchSingleProduct(id);
     // eslint-disable-next-line
   }, [id]);
+
   useEffect(() => {
     if (error) {
       setTimeout(() => {
@@ -57,7 +58,7 @@ const SingleProductPage = () => {
           Back to products
         </Link>
         <div className="products-center">
-          <ProductImages images={photos} featuredPhoto={featuredPhoto}/>
+          <ProductImages images={photos} featuredPhoto={featuredPhoto} />
           <section className="content">
             <h2>{name}</h2>
             <h5 className="price">{formatPrice(price)}</h5>
@@ -72,10 +73,10 @@ const SingleProductPage = () => {
             </p>
             <p className="info">
               <span>featured Product:</span>
-              {featuredProduct?'yes':'no'}
+              {featuredProduct ? "yes" : "no"}
             </p>
             <hr />
-            <AddToCart product={product}/>
+            <AddToCart product={product} />
           </section>
         </div>
       </div>
