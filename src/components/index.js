@@ -15,6 +15,7 @@ import Error from "./Error";
 import Stars from "./Stars";
 import ProductImages from "./ProductImages";
 import AddToCart from "./AddToCart";
+import CartContent from "./CartContent";
 export {
   CartButtons,
   Navbar,
@@ -33,4 +34,5 @@ export {
   Stars,
   ProductImages,
   AddToCart,
+  CartContent,
 };
