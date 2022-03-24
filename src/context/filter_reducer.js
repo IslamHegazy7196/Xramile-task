@@ -8,7 +8,7 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
   UPDATE_PAGINATION,
-} from "../actions";
+} from "./actions";
 import paginate from "../utils/paginate";
 
 const filter_reducer = (state, action) => {
@@ -26,6 +26,7 @@ const filter_reducer = (state, action) => {
       filters: { ...state.filters, max_price: maxprice, price: maxprice },
     };
   }
+  // paginate product
   if (action.type === UPDATE_PAGINATION) {
     return {
       ...state,
@@ -33,6 +34,7 @@ const filter_reducer = (state, action) => {
       current_pagination: action.payload,
     };
   }
+  // view products
   if (action.type === SET_GRIDVIEW) {
     return {
       ...state,
@@ -42,79 +44,85 @@ const filter_reducer = (state, action) => {
   if (action.type === SET_LISTVIEW) {
     return { ...state, grid_view: false };
   }
+  // update sort products
   if (action.type === UPDATE_SORT) {
     return { ...state, sort: action.payload };
   }
+  // sort products main function
   if (action.type === SORT_PRODUCTS) {
     const { sort, filtered_products } = state;
     let tempProducts = [...filtered_products];
+    let paginated = paginate(tempProducts);
     if (sort === "price-lowest") {
       tempProducts = tempProducts.sort((a, b) => a.price - b.price);
+      paginated = paginate(tempProducts);
     }
     if (sort === "price-highest") {
       tempProducts = tempProducts.sort((a, b) => b.price - a.price);
+      paginated = paginate(tempProducts);
     }
     if (sort === "name-a") {
       tempProducts = tempProducts.sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
+      paginated = paginate(tempProducts);
     }
     if (sort === "name-z") {
       tempProducts = tempProducts.sort((a, b) => {
         return b.name.localeCompare(a.name);
       });
+      paginated = paginate(tempProducts);
     }
-    return { ...state, filtered_products: tempProducts };
+    return {
+      ...state,
+      filtered_products: tempProducts,
+      all_pagination: paginated,
+      paginated_products: paginated[0],
+      current_pagination: 0,
+    };
   }
+  // update filter products
   if (action.type === UPDATE_FILTERS) {
     const { name, value } = action.payload;
     return { ...state, filters: { ...state.filters, [name]: value } };
   }
+  // filter products main function
   if (action.type === FILTER_PRODUCTS) {
     const { all_products } = state;
-    const { text, category, company, color, price, shipping } = state.filters;
+    const { text, price, featured } = state.filters;
     let tempProducts = [...all_products];
+    let paginated = paginate(tempProducts);
     if (text) {
       tempProducts = tempProducts.filter((product) => {
-        return product.name.toLowerCase().startsWith(text);
+        return product.name.toLowerCase().includes(text.trim().toLowerCase());
       });
-    }
-    if (category !== "all") {
-      tempProducts = tempProducts.filter((product) => {
-        return product.category === category;
-      });
-    }
-    if (company !== "all") {
-      tempProducts = tempProducts.filter((product) => {
-        return product.company === company;
-      });
-    }
-    if (color !== "all") {
-      tempProducts = tempProducts.filter((product) =>
-        product.colors.find((c) => c === color)
-      );
     }
 
     tempProducts = tempProducts.filter((product) => product.price <= price);
 
-    if (shipping) {
+    if (featured) {
       tempProducts = tempProducts.filter(
-        (product) => product.shipping === true
+        (product) => product.featuredProduct === true
       );
     }
-    return { ...state, filtered_products: tempProducts };
+    paginated = paginate(tempProducts);
+    return {
+      ...state,
+      filtered_products: tempProducts,
+      all_pagination: paginated,
+      paginated_products: paginated[0],
+      current_pagination: 0,
+    };
   }
+  // clear filters
   if (action.type === CLEAR_FILTERS) {
     return {
       ...state,
       filters: {
         ...state.filters,
         text: "",
-        company: "all",
-        category: "all",
-        color: "all",
         price: state.filters.max_price,
-        shipping: false,
+        featured: false,
       },
     };
   }

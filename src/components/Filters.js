@@ -8,21 +8,15 @@ const Filters = () => {
   const {
     filters: {
       text,
-      company,
-      category,
-      color,
       min_price,
       max_price,
       price,
-      shipping,
+      featured,
     },
     updateFilters,
     clearFilters,
     all_products,
   } = useFilterContext();
-  const categories = getUniqueValues(all_products, "category");
-  const companies = getUniqueValues(all_products, "company");
-  const colors = getUniqueValues(all_products, "colors");
   return (
     <Wrapper>
       <div className="content">
@@ -38,81 +32,8 @@ const Filters = () => {
             />
           </div>
 
-          {/* category */}
-          {/* <div className="form-control">
-            <h5>Category</h5>
-            <div>
-              {categories.map((c, index) => {
-                return (
-                  <button
-                    className={`${
-                      category === c.toLowerCase() ? "active" : null
-                    }`}
-                    key={index}
-                    onClick={updateFilters}
-                    type="button"
-                    name="category"
-                  >
-                    {c}
-                  </button>
-                );
-              })}
-            </div>
-          </div> */}
-          {/* company */}
-          {/* <div className="form-control">
-            <h5>company</h5>
-            <select
-              name="company"
-              value={company}
-              onChange={updateFilters}
-              className="company"
-            >
-              {companies.map((c, index) => {
-                return (
-                  <option key={index} value={c}>
-                    {c}
-                  </option>
-                );
-              })}
-            </select>
-          </div> */}
-          {/* colors */}
-          {/* <div className="form-control">
-            <h5>Colors</h5>
-            <div className="colors">
-              {colors.map((c, index) => {
-                if (c === "all") {
-                  return (
-                    <button
-                      key={index}
-                      name="color"
-                      onClick={updateFilters}
-                      data-color="all"
-                    >
-                      All
-                    </button>
-                  );
-                }
-                return (
-                  <button
-                    onClick={updateFilters}
-                    data-color={c}
-                    className={`${
-                      color === c ? "color-btn active" : "color-btn"
-                    }`}
-                    style={{ background: c }}
-                    key={index}
-                    name="color"
-                  >
-                    {c === color ? <FaCheck /> : null}
-                  </button>
-                );
-              })}
-            </div>
-          </div> */}
           {/* price */}
-          {/* <div className="form-control">
+          <div className="form-control">
             <h5>Price</h5>
             <p className="price">{formatPrice(price)}</p>
             <input
@@ -124,16 +45,16 @@ const Filters = () => {
               min={min_price}
             />
           </div>
-          <div className="form-control shipping">
-            <label htmlFor="shipping">Free shipping</label>
+          <div className="form-control featured">
+            <label htmlFor="featured">Featured Product</label>
             <input
-              checked={shipping}
+              checked={featured}
               onChange={updateFilters}
               type="checkbox"
-              name="shipping"
-              id="shipping"
+              name="featured"
+              id="featured"
             />
-          </div> */}
+          </div>
         </form>
         <button type="button" onClick={clearFilters} className="clear-btn">
           {" "}
@@ -221,7 +142,7 @@ const Wrapper = styled.section`
   .price {
     margin-bottom: 0.25rem;
   }
-  .shipping {
+  .featured {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;

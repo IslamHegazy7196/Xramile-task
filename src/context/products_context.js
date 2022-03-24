@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from "react";
-import reducer from "../reducers/products_reducer";
+import reducer from "./products_reducer";
 import data from "../db.json";
 import {
   SIDEBAR_OPEN,
@@ -10,7 +10,7 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
-} from "../actions";
+} from "./actions";
 
 const initialState = {
   isSidebarOpen: false,

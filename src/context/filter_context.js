@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useReducer } from "react";
-import reducer from "../reducers/filter_reducer";
+import reducer from "./filter_reducer";
 import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
@@ -10,7 +10,7 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
   UPDATE_PAGINATION,
-} from "../actions";
+} from "./actions";
 import { useProductsContext } from "./products_context";
 
 const initialState = {
@@ -18,17 +18,14 @@ const initialState = {
   all_products: [],
   all_pagination: [],
   paginated_products: [],
-  grid_view: true,
+  grid_view: false,
   sort: "price-lowest",
   filters: {
     text: "",
-    company: "all",
-    category: "all",
-    color: "all",
     min_price: 0,
     max_price: 0,
     price: 0,
-    shipping: false,
+    featured: false,
   },
 };
 
