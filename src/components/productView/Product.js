@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { formatPrice } from "../utils/helpers";
+import { formatPrice } from "../../utils/helpers";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import { useCartContext } from "../context/cart_context";
+import { useCartContext } from "../../context/cart_context";
 
 const Product = ({ featuredPhoto, name, price, id }) => {
   const { addToCart } = useCartContext();

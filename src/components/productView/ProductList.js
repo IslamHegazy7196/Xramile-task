@@ -1,5 +1,5 @@
 import React from "react";
-import { useFilterContext } from "../context/filter_context";
+import { useFilterContext } from "../../context/filter_context";
 import GridView from "./GridView";
 import ListView from "./ListView";
 import PaginationButtons from "./PaginationButtons";
@@ -19,15 +19,15 @@ const ProductList = () => {
   if (!grid_view) {
     return (
       <>
-        <PaginationButtons />
         <ListView products={paginated_products} />
+        <PaginationButtons />
       </>
     );
   }
   return (
     <>
-      <PaginationButtons />
       <GridView products={paginated_products}>product list</GridView>
+      <PaginationButtons />
     </>
   );
 };

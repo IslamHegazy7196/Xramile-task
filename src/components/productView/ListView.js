@@ -1,21 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { formatPrice } from "../utils/helpers";
+import { formatPrice } from "../../utils/helpers";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../context/cart_context";
+import { useCartContext } from "../../context/cart_context";
 const ListView = ({ products }) => {
   const { addToCart } = useCartContext();
   return (
     <Wrapper>
       {products.map((product) => {
         const { id, featuredPhoto, name, price, description } = product;
-        const item = {
-          id,
-          name,
-          amount: 1,
-          featuredPhoto,
-          price,
-        };
         let amount = 1;
         return (
           <article key={id}>

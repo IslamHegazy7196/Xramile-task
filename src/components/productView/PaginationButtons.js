@@ -1,5 +1,5 @@
 import React from "react";
-import { useFilterContext } from "../context/filter_context";
+import { useFilterContext } from "../../context/filter_context";
 import styled from "styled-components";
 
 const PaginationButtons = () => {
@@ -8,14 +8,14 @@ const PaginationButtons = () => {
   const Nextpage = () => {
     let nextpage = current_pagination + 1;
     if (nextpage > all_pagination.length - 1) {
-      nextpage = 0;
+      nextpage = all_pagination.length - 1;
     }
     setPagnition(nextpage);
   };
   const prevpage = () => {
     let prevpage = current_pagination - 1;
     if (prevpage < 0) {
-      prevpage = all_pagination.length - 1;
+      prevpage = 0;
     }
     setPagnition(prevpage);
   };
