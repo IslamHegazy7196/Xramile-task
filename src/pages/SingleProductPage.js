@@ -7,7 +7,7 @@ import {
   Error,
   ProductImages,
   AddToCart,
-  PageHero,
+  PageHero,Stars,
 } from "../components";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -61,16 +61,9 @@ const SingleProductPage = () => {
           <ProductImages images={photos} featuredPhoto={featuredPhoto} />
           <section className="content">
             <h2>{name}</h2>
+            <Stars stars={rate} reviews={reviewsCount} />
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
-            <p className="info">
-              <span>Rate:</span>
-              {rate}/5
-            </p>
-            <p className="info">
-              <span>Review counts:</span>
-              {reviewsCount}
-            </p>
             <p className="info">
               <span>featured Product:</span>
               {featuredProduct ? "yes" : "no"}

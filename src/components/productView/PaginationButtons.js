@@ -53,7 +53,7 @@ const Wrapper = styled.section`
   .btn-container {
     display: flex;
     column-gap: 0.5rem;
-    margin-bottom: 0.25rem;
+    margin-top: 0.5rem;
     justify-content: center;
     align-items: center;
     text-align: center;

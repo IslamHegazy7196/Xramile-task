@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useFilterContext } from "../../context/filter_context";
 import { formatPrice } from "../../utils/helpers";
-import { FaCheck } from "react-icons/fa";
-
 const Filters = () => {
   const {
     filters: {
@@ -15,7 +13,6 @@ const Filters = () => {
     },
     updateFilters,
     clearFilters,
-    all_products,
   } = useFilterContext();
   return (
     <Wrapper>
@@ -48,7 +45,8 @@ const Filters = () => {
           <div className="form-control featured">
             <label htmlFor="featured">Featured Product</label>
             <input
-              checked={featured}
+            value={featured}
+              // checked={featured}
               onChange={updateFilters}
               type="checkbox"
               name="featured"

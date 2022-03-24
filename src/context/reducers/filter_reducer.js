@@ -84,7 +84,11 @@ const filter_reducer = (state, action) => {
   // update filter products
   if (action.type === UPDATE_FILTERS) {
     const { name, value } = action.payload;
-    return { ...state, filters: { ...state.filters, [name]: value } };
+    let x = value;
+    if (name === "featured") {
+      x = !state.filters.featured;
+    }
+    return { ...state, filters: { ...state.filters, [name]: x } };
   }
   // filter products main function
   if (action.type === FILTER_PRODUCTS) {
