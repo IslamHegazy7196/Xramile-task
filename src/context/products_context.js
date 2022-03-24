@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from "react";
-import reducer from "./products_reducer";
+import reducer from "./reducers/products_reducer";
 import data from "../db.json";
 import {
   SIDEBAR_OPEN,

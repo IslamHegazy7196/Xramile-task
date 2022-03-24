@@ -8,8 +8,8 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
   UPDATE_PAGINATION,
-} from "./actions";
-import paginate from "../utils/paginate";
+} from "../actions";
+import paginate from "../../utils/paginate";
 
 const filter_reducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
