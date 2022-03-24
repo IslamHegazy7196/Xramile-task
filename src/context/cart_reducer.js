@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import {
   ADD_TO_CART,
   CLEAR_CART,
@@ -19,6 +20,9 @@ const cart_reducer = (state, action) => {
           return cartItem;
         }
       });
+      toast.success("Item is added to cart", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
       return { ...state, cart: tempCart };
     } else {
       const newItem = {
@@ -28,14 +32,21 @@ const cart_reducer = (state, action) => {
         image: product.featuredPhoto,
         price: product.price,
       };
+      toast.success("Item is modified in cart");
       return { ...state, cart: [...state.cart, newItem] };
     }
   }
   if (action.type === REMOVE_CART_ITEM) {
     const tempCart = state.cart.filter((item) => item.id !== action.payload);
+    toast.success("Item removed from cart", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
     return { ...state, cart: tempCart };
   }
   if (action.type === CLEAR_CART) {
+    toast.success("Cart cleared", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
     return { ...state, cart: [] };
   }
   if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
@@ -44,16 +55,18 @@ const cart_reducer = (state, action) => {
       if (item.id === id) {
         if (value === "inc") {
           let newAmount = item.amount + 1;
-          if (newAmount > item.max) {
-            newAmount = item.max;
-          }
+          toast.success("Item is modified in cart");
           return { ...item, amount: newAmount };
         }
         if (value === "dec") {
           let newAmount = item.amount - 1;
+          if (newAmount > 0) {
+            toast.success("Item is modified in cart");
+          }
           if (newAmount < 1) {
             newAmount = 1;
           }
+          
           return { ...item, amount: newAmount };
         }
       }

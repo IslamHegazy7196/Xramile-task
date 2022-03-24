@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
+import {ToastContainer} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 import {
   Home,
   Products,
@@ -11,6 +13,7 @@ import {
 function App() {
   return (
     <Router>
+      <ToastContainer position="bottom-right" />
       <Navbar />
       <Sidebar />
       <Switch>
